@@ -1,0 +1,144 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+body {
+	margin: 0;
+	font-family: "Raleway", Arial, sans-serif;
+}
+
+header {
+	background-color: #f8f8f8;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+}
+
+.logo img {
+	width: 100px;
+	height: auto;
+}
+
+.nav-links {
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-links li {
+	margin: 0 15px;
+}
+
+.nav-links a {
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+}
+
+.nav-links a:hover {
+	color: #007BFF;
+}
+
+/* Hamburger Menu Styles */
+.menu-button-container {
+	display: none;
+	height: 100%;
+	width: 30px;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#menu-toggle {
+	display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+	display: block;
+	background-color: #333;
+	position: absolute;
+	height: 4px;
+	width: 30px;
+	transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+	border-radius: 2px;
+}
+
+.menu-button::before {
+	content: '';
+	margin-top: -8px;
+}
+
+.menu-button::after {
+	content: '';
+	margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+	margin-top: 0px;
+	transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+	background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+	margin-top: 0px;
+	transform: rotate(-405deg);
+}
+
+<<<<<<< HEAD
+/* Responsive Menu */
+=======
+>>>>>>> 9a2ea03b4d8d43d63b9fb08343fbedb8e62f41b1
+@media (max-width: 600px) {
+	.menu-button-container {
+		display: flex;
+	}
+
+	.nav-links {
+		display: none;
+		flex-direction: column;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+<<<<<<< HEAD
+		background-color: #f8f8f8; /* Light background color */
+=======
+		background-color: #f8f8f8;
+>>>>>>> 9a2ea03b4d8d43d63b9fb08343fbedb8e62f41b1
+	}
+
+	#menu-toggle:checked ~ .nav-links {
+		display: flex;
+	}
+
+	.nav-links li {
+		width: 100%;
+		text-align: center;
+		margin: 0;
+		padding: 0.5em 0;
+<<<<<<< HEAD
+		background-color: #f8f8f8; /* Ensure a light background for the list items */
+		color: #333; /* Darker text color for contrast */
+	}
+
+	.nav-links li:not(:last-child) {
+		border-bottom: 1px solid #ccc; /* Light border for separation */
+=======
+		background-color: #f8f8f8;
+		color: #333;
+	}
+
+	.nav-links li:not(:last-child) {
+		border-bottom: 1px solid #ccc;
+>>>>>>> 9a2ea03b4d8d43d63b9fb08343fbedb8e62f41b1
+	}
+}
