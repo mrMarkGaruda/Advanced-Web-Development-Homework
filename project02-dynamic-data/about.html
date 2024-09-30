@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
+    <title>About | Weather App</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <style>
         /* Custom Styles */
@@ -96,31 +96,36 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="#">Weather App</a>
+                <ul class="nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <main class="container mt-4">
-        <!-- Input group for city search -->
-        <div class="input-group mb-3">
-            <input type="text" id="searchInput" class="form-control" placeholder="Enter city name..." />
-            <button class="btn btn-primary" id="searchButton">Get Weather</button>
+        <div class="about-content">
+            <h1>About the App</h1>
+            <p>
+                Welcome to the Weather App! This project provides real-time weather data for cities around the world. 
+                Simply enter a city name, and the app will fetch the latest weather conditions, including temperature, humidity, and more.
+            </p>
+            <p>
+                <strong>Technology Stack:</strong>
+            </p>
+            <ul>
+                <li><strong>HTML5, CSS3</strong> - User Interface</li>
+                <li><strong>Bootstrap 5.3</strong> - Responsive Design</li>
+                <li><strong>JavaScript</strong> - Fetch API for Data Retrieval</li>
+                <li><strong>Open-Meteo API</strong> - Real-Time Weather Data</li>
+                <li><strong>Vite</strong> - Modern Build Tool</li>
+            </ul>
         </div>
-
-        <!-- Spinner for loading -->
-        <div class="spinner-container">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-
-        <!-- Alert for errors -->
-        <div class="alert alert-danger" role="alert">
-            No results found.
-        </div>
-
-        <!-- Dynamic weather data -->
-        <div class="dynamic_data row mt-3"></div>
     </main>
 
     <!-- Footer -->
