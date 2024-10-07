@@ -14,3 +14,6 @@ This repo is a collection of web development homework projects and exercises.
 
 - **Project II - Dynamic Data**
   - A project focused on dynamic data loading and manipulation.
+
+- **Project III - NodeJs Rest API**
+  - A project aimed at creating an API.
