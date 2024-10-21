@@ -17,3 +17,19 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
+
+// This down below is important for api to connect!
+
+// // MIDDLEWARE
+// app.use(express.json())
+// // CORS
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "*")
+//     res.setHeader(
+//         "Access-Control-Allow-Headers",
+//         "Origin, X-Requested-With, Content, Accept, Content-Type, x-api-key"
+//     )
+//     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+//     next()
+// })
