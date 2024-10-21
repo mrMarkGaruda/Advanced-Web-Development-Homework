@@ -1,46 +1,35 @@
 const express = require('express');
+const usersRouter = require("./routes/users.js");
+const db = require("./database"); // Import your SQLite database connection
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use("/api/", usersRouter);
 
-let users = []; // Array to store users
-
-app.get('/', (req, res) => {
-    res.json(users);
-});
-
-app.post('/', (req, res) => {
-    const { firstName, lastName } = req.body;
-    if (!firstName || !lastName) {
-        return res.status(400).json({ msg: 'Missing firstName or lastName' });
-    }
-    const newUser = { id: users.length + 1, firstName, lastName };
-    users.push(newUser);
-    res.status(201).json({ msg: 'User created', user: newUser });
-});
-
-app.put('/:id', (req, res) => {
-    const { id } = req.params;
-    const { firstName, lastName } = req.body;
-    const userIndex = users.findIndex(user => user.id == id);
-    if (userIndex === -1) {
-        return res.status(404).json({ msg: 'User not found' });
-    }
-    users[userIndex] = { id: parseInt(id), firstName, lastName };
-    res.json({ msg: 'User updated', user: users[userIndex] });
-});
-
-app.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    const userIndex = users.findIndex(user => user.id == id);
-    if (userIndex === -1) {
-        return res.status(404).json({ msg: 'User not found' });
-    }
-    users.splice(userIndex, 1);
-    res.json({ msg: `Deleted resource with id: ${id}` });
-});
+// HOME GET METHOD
+app.get("/", (req, res) => {
+  res.json({
+    msg: "Welcomes!",
+  })
+})
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
+
+// This down below is important for api to connect!
+
+// // MIDDLEWARE
+// app.use(express.json())
+// // CORS
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "*")
+//     res.setHeader(
+//         "Access-Control-Allow-Headers",
+//         "Origin, X-Requested-With, Content, Accept, Content-Type, x-api-key"
+//     )
+//     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+//     next()
+// })
