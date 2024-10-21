@@ -6,4 +6,4 @@ Just an exercise for basic array manipulation
 - It prints the name, age, courses, and grade of a student
 
 ### How to Run:
-- Run node index.js in the terminal
+- Run `node index.js` in the terminal
