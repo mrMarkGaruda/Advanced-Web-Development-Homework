@@ -17,3 +17,6 @@ This repo is a collection of web development homework projects and exercises.
 
 - **Project III - NodeJs Rest API**
   - A project aimed at creating an API.
+
+- **Project III.I - Front-End**
+  - The front end application for the project 3.
