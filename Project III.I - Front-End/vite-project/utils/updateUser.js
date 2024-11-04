@@ -12,7 +12,7 @@ export async function updateUser(firstName, lastName, userId) {
         };
         const res = await fetch(url, options);
         if (!res.ok) throw new Error("Error updating user");
-        return await res.json(); // Return updated user data
+        return await res.json(); // Return updated user dataa
     } catch (error) {
         console.error(error);
     }
