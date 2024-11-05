@@ -1,14 +1,20 @@
-// utils/handleData.js
+// handleData.js
 import { cardComponent } from "../components/cardComponent";
-import { userActions } from "../components/userActions";
+import { cardImage } from "../components/cardImage";
+import { usersData } from "../components/usersData";
+import { usersActions } from "../components/userActions";
 
 export function handleData(usersArray) {
-    const app = document.getElementById("app");
-    app.innerHTML = ""; // Clear previous content
-    usersArray.forEach(user => {
-        const cardArticle = cardComponent();
-        cardArticle.setAttribute("userId", user.id);
-        cardArticle.appendChild(userActions(user.id)); // Pass userId to userActions
-        app.appendChild(cardArticle);
-    });
+	const app = document.getElementById("app");
+	app.innerText = "";  // Clear previous content
+
+	usersArray.forEach((user) => {
+		const cardArticle = cardComponent();
+		cardArticle.setAttribute("userId", user.id);
+		cardArticle.appendChild(cardImage(user.profileImg));
+		cardArticle.appendChild(usersData(user.firstName, user.lastName));
+		cardArticle.appendChild(usersActions(user.id));
+
+		app.appendChild(cardArticle);
+	});
 }

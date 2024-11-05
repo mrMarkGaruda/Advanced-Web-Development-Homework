@@ -1,22 +1,7 @@
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    padding: 0.5em;
-}
-
 .warning-btn {
     background-color: #ca9849;
 }
 
 .danger-btn {
-    background-color: #ca495e;
-}
-
-.btn img {
-    width: 1.5em;
-    height: 1.5em;
+    background-color: #d5384f;
 }

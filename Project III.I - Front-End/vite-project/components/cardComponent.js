@@ -1,7 +1,7 @@
-import "./cardComponent.css";
+import "./cardComponent.css"
 
 export const cardComponent = () => {
-  const card = document.createElement("article");
-  card.classList.add("card");
-  return card;
-};
+	const card = document.createElement("article")
+	card.classList.add("card")
+	return card
+}

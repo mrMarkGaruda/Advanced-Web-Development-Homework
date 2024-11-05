@@ -1,39 +1,27 @@
-import { cardComponent } from './components/cardComponent';
-import { cardImage } from './components/cardImage';
-import { usersData } from './components/usersData';
-import { fetchUsers } from './utils/fetchData'; // Ensure this path is correct
-import { handleData } from './utils/handleData'; // Imported handleData
-import { userActions } from './components/userActions';
-import './style.css';
+/* helper functions */
+import { fetchUsers } from "./utils/fetchData"
 
-// Renamed local function to avoid conflict
-export function renderUserCards(usersArray) {
-    const app = document.getElementById("app");
-    app.innerHTML = ""; // Clear previous content
+import "./style.css"
+import { handleData } from "./utils/handleData"
+import { modalComp } from "./components/modalComp"
 
-    usersArray.forEach(user => {
-        const card = cardComponent();
-        card.setAttribute("userId", user.id); // Store user ID in the card
+export async function init() {
+	app.innerText = "loading ..."
+	const usersArray = await fetchUsers()
 
-        // Create and append components to the card
-        card.appendChild(cardImage(user.profileImg)); // Pass user's profile image
-        card.appendChild(usersData(user.firstName, user.lastName)); // Pass user's data
-        card.appendChild(userActions(user.id)); // Pass user ID to user actions
+	if (!usersArray.length) {
+		app.innerText = "Something went very very wrong ... " + usersArray
+		const img = new Image()
+		img.classList.add("error-img")
+		img.src = "./assets/offline.jpg"
+		app.appendChild(img)
+		return
+	}
 
-        // Append the card to the app container
-        app.appendChild(card);
-    });
+	// check if this is not an empty array
+	if (usersArray.length) handleData(usersArray)
+
+	app.appendChild(modalComp())
 }
 
-// Fetch users and render them
-fetchUsers().then(usersArray => {
-    if (usersArray && usersArray.length) {
-        renderUserCards(usersArray); // Call the renamed function
-    } else {
-        const app = document.getElementById("app");
-        app.innerHTML = "<p>No users found.</p>";
-    }
-});
-
-// Call handleData on initial fetch
-fetchUsers().then(handleData);
+init()

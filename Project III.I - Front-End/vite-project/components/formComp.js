@@ -1,35 +1,33 @@
-// components/formComp.js
+// formComp.js
 import "./formComp.css";
 import { inputComp } from "./inputComp";
 import { updateUser } from "../utils/updateUser";
 import { fetchUsers } from "../utils/fetchData";
 import { handleData } from "../utils/handleData";
-import { modalComp } from "./modalComp";
 
-export const formComp = (firstName, lastName, userId) => {
+export const formComp = (userId) => {
 	const form = document.createElement("form");
 	form.classList.add("form");
 
-	form.appendChild(inputComp("text", "firstName", "First Name", firstName));
-	form.appendChild(inputComp("text", "lastName", "Last Name", lastName));
+	form.appendChild(inputComp("text", "firstName", "First Name", "John"));  // Placeholder values
+	form.appendChild(inputComp("text", "lastName", "Last Name", "Doe"));
 
 	const submitBtn = document.createElement("button");
 	submitBtn.setAttribute("type", "submit");
 	submitBtn.innerText = "Submit";
 
+	form.appendChild(submitBtn);
+
 	form.addEventListener("submit", async (e) => {
 		e.preventDefault();
 		const updatedFirstName = document.getElementById("firstName").value;
 		const updatedLastName = document.getElementById("lastName").value;
-		const response = await updateUser(updatedFirstName, updatedLastName, userId);
-		document.querySelector(".modal-overlay").classList.toggle("show");
+		await updateUser(updatedFirstName, updatedLastName, userId);
 
-		if (response.msg === "User updated") {
-			const usersArray = await fetchUsers();
-			if (usersArray && usersArray.length) handleData(usersArray);
-		}
+		const usersArray = await fetchUsers();
+		handleData(usersArray);
+		document.querySelector(".modal-overlay").classList.remove("show");
 	});
 
-	form.appendChild(submitBtn);
 	return form;
 };
